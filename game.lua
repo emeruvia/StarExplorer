@@ -166,7 +166,8 @@ local function restoreShip()
 end
 
 local function endGame()
-	composer.gotoScene( "menu", {time=800, effect="crossFade"})
+	composer.setVariable("finalScore", score)
+	composer.gotoScene("highscores", {time=800, effect="crossFade"})	
 end
 
 local function onCollision( event )
@@ -223,10 +224,10 @@ end
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
- 
+
 -- create()
 function scene:create( event )
- 
+
 	local sceneGroup = self.view
 	-- Code here runs when the scene is first created but has not yet appeared on screen
 
@@ -306,6 +307,7 @@ function scene:destroy( event )
 	-- Code here runs prior to the removal of scene's view
 
 end
+
 
 -- -----------------------------------------------------------------------------------
 -- Scene event function listeners
